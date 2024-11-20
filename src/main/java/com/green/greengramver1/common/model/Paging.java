@@ -14,6 +14,4 @@ public class Paging {
     private int size;
     @JsonIgnore
     private int startIdx;
-
-
 }
