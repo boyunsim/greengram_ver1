@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Slf4j
 @Component //빈등록 (spring container한테 객체화 맡기는 것
-           //, 주소값 들고 있어달라고 요청 필요할 때 singletone으로 같은 주소값을 shallow copy로 줄 수 있도록 하는 것)
+           //, 주소값 들고 있어달라고 요청 필요할 때 singletone 방식으로 같은 주소값을 shallow copy로 줄 수 있도록 하는 것)
 public class MyFileUtils {
     private final String uploadPath;
 
@@ -43,7 +43,7 @@ public class MyFileUtils {
     public String makeRandomFileName() {
         return UUID.randomUUID().toString();
     }
-
+    //?// 메소드는 한가지 일만 하도록 하기위해 나눈건가? 수정의 가능성이 있어서?
     //랜덤 파일명 + 확장자 생성
     public String makeRandomFileName(String originalFileName) {
         //return this.makeRandomFileName().concat(this.getExt(originalFileName));
@@ -59,8 +59,6 @@ public class MyFileUtils {
         File file = new File(uploadPath, path);
         multipartFile.transferTo(file);
     }
-
-
 
 }
 
