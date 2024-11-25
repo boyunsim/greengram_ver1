@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class UserSignUpReq {
     @JsonIgnore
-    private long userId;
+    private long userId; //service에서 mapper호출시 값이 생긴다.
     @Schema(description = "유저 아이디", example = "mic"
             , requiredMode = Schema.RequiredMode.REQUIRED)
     private String uid;

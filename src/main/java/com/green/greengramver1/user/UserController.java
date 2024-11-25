@@ -37,7 +37,6 @@ public class UserController {
                 .resultData(result)
                 .build();
     }
-
     @PostMapping("sign-in")
     @Operation(summary = "로그인")
     public ResultResponse<UserSignInRes> signIn(@RequestBody UserSignInReq p) {

@@ -30,6 +30,7 @@ public class UserService {
         p.setPic(savedPicName);
 
         int result = mapper.insUser(p);
+        //호출하고 나면 UserSignUpReq에 pk값이 생성된다.
 
         if(pic == null) {
             return result;
@@ -44,7 +45,7 @@ public class UserService {
         String filePath = String.format("%s/%s", middlePath, savedPicName);
 
         try {
-            myFileUtils.transferTo(pic, filePath);
+            myFileUtils.transferTo(pic, filePath); //pic 객체의 내용을 filepath경로로 이동
         } catch (IOException e) {
             e.printStackTrace();
         }

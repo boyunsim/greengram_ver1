@@ -29,7 +29,13 @@ public class MyFileUtils {
     //디렉토리 생성
     public String makeFolders(String path) {
         File file = new File(uploadPath, path);
-        file.mkdirs();
+        // static 아님 >> 객체화하고 주소값.(file.)으로 호출했기 때문에
+        // 리턴타입은 boolean >> if()안에서 호출했기 때문에
+        // 파라미터는 없음 >> 호출 때 인자를 보내지 않았기 때문에
+        // 메소드명은 >> exists였다.
+        if(!file.exists()){
+            file.mkdirs();
+        }
         return file.getAbsolutePath();
     }
 
@@ -60,12 +66,4 @@ public class MyFileUtils {
         multipartFile.transferTo(file);
     }
 
-}
-
-class Test {
-    public static void main(String[] args) {
-        MyFileUtils myFileUtils = new MyFileUtils("C:/temp");
-        String randomFilename = myFileUtils.makeRandomFileName("1664_56541654.jpg");
-        System.out.println(randomFilename);
-    }
 }
