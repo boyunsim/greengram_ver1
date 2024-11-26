@@ -65,7 +65,9 @@ public class FeedService {
 
     public List<FeedGetRes> getFeedList(FeedGetReq p) {
         List<FeedGetRes> list = mapper.getFeedList(p);
+        //사진 매핑
         for(FeedGetRes res: list){
+            //DB애서 각 피드에 맞는 사진 정보를 가져온다.
             List<String> picList = mapper.selFeedPicList(res.getFeedId());
             res.setPics(picList);
         }
