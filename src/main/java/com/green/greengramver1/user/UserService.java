@@ -22,7 +22,7 @@ public class UserService {
     public int postSignUp(MultipartFile pic, UserSignUpReq p) {
         //프로필 이미지 파일 처리
         //String savedPicName = myFileUtils.makeRandomFileName(pic.getOriginalFilename());
-        String savedPicName = (pic != null ? myFileUtils.makeRandomFileName(pic) : null);
+        String savedPicName = pic != null ? myFileUtils.makeRandomFileName(pic) : null;
 
         String hashedPassword = BCrypt.hashpw(p.getUpw(), BCrypt.gensalt());
         log.info("hashedPassword: {}", hashedPassword);
@@ -58,8 +58,7 @@ public class UserService {
             res = new UserSignInRes();
             res.setMessage("아이디를 확인해 주세요.");
             return res;
-        }
-        if( !BCrypt.checkpw(p.getUpw(), res.getUpw())) {
+        }else if( !BCrypt.checkpw(p.getUpw(), res.getUpw())) {
             res = new UserSignInRes();
             res.setMessage("비밀번호가 틀렸습니다.");
             return res;
